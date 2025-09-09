@@ -16,7 +16,7 @@ RUN mkdir -p /var/log/supervisor
 COPY pyproject.toml uv.lock* .python-version* ./
 
 # 安装项目依赖
-RUN uv pip sync --system --no-cache --frozen-lockfile
+RUN uv pip install . --system --no-cache
 
 # 复制项目文件
 COPY . .
