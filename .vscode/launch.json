@@ -1,0 +1,25 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Protobuf Bridge Server",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/server.py",
+      "console": "internalConsole"
+    },
+    {
+      "name": "OpenAI Compat Server",
+      "type": "python",
+      "request": "launch",
+      "program": "${workspaceFolder}/openai_compat.py",
+      "console": "internalConsole"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "All Servers",
+      "configurations": ["Protobuf Bridge Server", "OpenAI Compat Server"]
+    }
+  ]
+}

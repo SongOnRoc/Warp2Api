@@ -1,0 +1,24 @@
+version: '3.8'
+
+# 此 docker-compose.yml 文件用于从 GitHub Packages 拉取并运行预构建的镜像。
+# 它不用于本地开发时的代码热重载。
+
+services:
+  warp2api:
+    # 重要：请将下面的镜像路径替换为您的 GitHub Packages 中的实际镜像路径。
+    # 格式为：ghcr.io/<您的GitHub用户名或组织名>/<您的仓库名>:latest
+    image: ghcr.io/OWNER/REPO:latest
+    
+    ports:
+      - "8010:8010"
+      
+    # 从当前目录的 .env 文件中加载环境变量。
+    # 有关所需变量（如 WARP_JWT），请参阅 README.md。
+    env_file:
+      - .env
+      
+    # 确保 docker-compose 总是尝试拉取最新版本的镜像。
+    pull_policy: always
+    
+    # 除非手动停止，否则在容器退出时总是重新启动。
+    restart: unless-stopped
